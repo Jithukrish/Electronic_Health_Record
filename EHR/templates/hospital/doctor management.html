@@ -1,0 +1,54 @@
+{% extends 'hospital/Hospital dash.html'%}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="adddoc1m">
+  <table width="200" border="1" class="table table-dark table-hover">
+    <tr>
+      <td>sl no </td>
+      
+      <td>Fname</td>
+      <td>Lname</td>
+      <td>Dob</td>
+      <td>image</td>
+
+      <td>department</td>
+      <td>gender</td>
+      <td>phonde</td>
+      <td>email</td>
+      <td>Regno</td>
+      <td>specilization</td>
+      <td>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.Fname}}</td>
+      <td>{{i.Lname}}</td>
+      <td>{{i.Lname}}</td>
+
+      <td>{{i.d_id}}</td>
+      <td>{{i.phone}}</td>
+      <td>{{i.gender}}</td>
+      <td>{{i.email}}</td>
+      <td>{{i.regno}}</td>
+      <td>{{i.specilization}}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="7"><label>
+        <input type="submit" name="Submit" value="Add" href="adddoc" />
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}
+</html>

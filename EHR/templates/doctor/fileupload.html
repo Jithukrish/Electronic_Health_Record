@@ -1,0 +1,186 @@
+{% extends 'doctor/DOCTOR_DASH.html' %}
+
+{% block body %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  
+<script>
+   $(document).ready(function(){
+    $("#check").change(function(){
+      var id=document.getElementById("check").value;
+      
+     if (id == "staff" ){
+     
+      $("#des").show();
+  }
+  else
+  {
+   
+  $("#des").hide();
+  }
+  
+    });
+  }); 
+
+
+  {% comment %} function check(){
+    const myDropdown = document.getElementById('drp');
+const myInput = document.getElementById('des');
+
+myDropdown.addEventListener('change', function() {
+  if (myDropdown.value === 'guard') {
+    myInput.disabled = true;
+  } else {
+    myInput.disabled = false;
+  }
+});
+  } {% endcomment %}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style>.form {
+  background-color: white;
+  height=120px;
+  padding: 1.125em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
+}
+
+.signup {
+  color: rgb(77, 75, 75);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: 0.5em;
+}
+
+.form--input {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.form--desig {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.form--drop {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+
+.form--input:focus {
+  border: 1px solid #639;
+  outline: none;
+}
+
+.form--marketing {
+  display: flex;
+  margin-bottom: 1.25em;
+  align-items: center;
+}
+
+.form--marketing > input {
+  margin-right: 0.625em;
+}
+
+.form--marketing > label {
+  color: grey;
+}
+
+.checkbox, input[type="checkbox"] {
+  accent-color: #639;
+} 
+.form--submit {
+  width: 50%;
+  padding: 0.625em;
+  border-radius: 5px;
+  color: white;
+  background-color: #639;
+  border: 1px dashed #639;
+  cursor: pointer;
+}
+
+.form--submit:hover {
+  color: #639;
+  background-color: white;
+  border: 1px dashed #639;
+  cursor: pointer;
+  transition: 0.5s;
+} 
+</style>
+</head>
+
+<body>
+  <div style="padding:15px">
+  <div style="width:35%;  margin: auto;" >
+   
+<form class="form" action="file_upload" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  {% comment %} <table width="575" height="402" border="1"> {% endcomment %}
+    
+    {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">Name</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        <span class="signup">UPLOAD RECORD</span>
+        
+      
+        
+       
+    
+    <input type="file" name="file" class="form--input"  placeholder="Current User Record"/>
+  </label></td>
+</tr> 
+        
+        
+        <input type="submit" name="submit" class="form--input" value="Upload User Record"/>
+      </label></td>
+    </tr>
+
+    <script>
+      function validateDepartmentName() {
+        var department_name = document.getElementById("department_name").value;
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            var department_error_div = document.getElementById("department_name_error");
+      if (response.message == "") {
+        department_error_div.style.display = "none";
+      } else {
+        department_error_div.style.display = "block";
+        department_error_div.innerHTML = response.message;
+      }
+          }
+        };
+        xhttp.open("GET", "/validate_department/?department_name="+department_name, true);
+        xhttp.send();
+      }
+      document.getElementById("department_name").addEventListener("change", validateDepartmentName);
+      </script>
+      
+     {% endblock %}
+      {% comment %} {% endcomment %}

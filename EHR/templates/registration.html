@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<body>
+<form action="" method="post">
+  <label for="full-name">Full Name:</label>
+  <input type="text" name="full-name" id="full-name" required>
+
+  <label for="address">Address:</label>
+  <input type="text" name="address" id="address" required>
+
+  <label for="phone-number">Phone Number:</label>
+  <input type="tel" name="phone-number" id="phone-number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+  <label for="email">Email:</label>
+  <input type="email" name="email" id="email" required>
+
+  <label for="date-of-birth">Date of Birth:</label>
+  <input type="date" name="date-of-birth" id="date-of-birth"  min="1980-01-01" max="2022-12-31" required>
+
+  <label for="gender">Gender:</label>
+  <select name="gender" id="gender" required>
+    <option value="">Select Gender</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+    <option value="other">Other</option>
+  </select>
+
+  <label for="emergency-contact-name">Emergency Contact Name:</label>
+  <input type="text" name="emergency-contact-name" id="emergency-contact-name" required>
+
+  <label for="emergency-contact-phone">Emergency Contact Phone Number:</label>
+  <input type="tel" name="emergency-contact-phone" id="emergency-contact-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
+
+  <label for="chronic-illnesses">Chronic Illnesses:</label>
+  <textarea name="chronic-illnesses" id="chronic-illnesses"></textarea>
+
+  <label for="surgeries">Surgeries:</label>
+  <textarea name="surgeries" id="surgeries"></textarea>
+
+  <label for="allergies">Allergies:</label>
+  <textarea name="allergies" id="allergies"></textarea>
+
+  <label for="reason-for-registration">Reason for Registration:</label>
+  <textarea name="reason-for-registration" id="reason-for-registration" required></textarea>
+
+  <label for="privacy-policy-agreement">
+    <input type="checkbox" name="privacy-policy-agreement" id="privacy-policy-agreement" required>
+    I agree to the Privacy Policy
+  </label>
+
+  <label for="terms-and-conditions-agreement">
+    <input type="checkbox" name="terms-and-conditions-agreement" id="terms-and-conditions-agreement" required>
+    I agree to the Terms and Conditions
+  </label>
+
+  <input type="submit" value="Register">
+</form>
+</body>
+</html>

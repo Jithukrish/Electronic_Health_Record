@@ -1,0 +1,51 @@
+{% extends 'admint/addash.html' %}
+{% block body %}
+
+
+
+
+
+
+
+
+<html>
+    <head>
+        <title>
+
+        </title><style>
+            .card {
+                margin-top: 3%;
+                width: 70%;
+                height: 110%;
+                border-radius: 30px;
+                background: lightgrey;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 50px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 26px -18px inset;
+                border-radius: 50px;
+               }
+        </style>
+    </head>
+    <body><center>
+        <div class="card"><font size="5"><b><br>
+
+            <div><img src="{{val.image.url }}" width="30%" height="30%"/></div>
+            <br><div>{{val.hospitalname}}</div>
+            <br><div>{{val.place}}</div>
+            <br><div>{{val.phone}}</div>
+            <br><div>{{val.address}}</div>
+            
+            <br><div>{{val.pincode}}</div>
+            <br><div>{{val.description}}</div>
+            
+            
+            
+            
+        </b></font>
+        </div>
+    </center></body>
+</html>
+
+
+{% endblock %}
+
+
+   

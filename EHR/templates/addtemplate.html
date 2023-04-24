@@ -1,0 +1,150 @@
+{% extends 'hospital/hospital dash.html' %}
+
+{% block body %}
+ 
+   
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style>.form {
+  background-color: white;
+  height=120px;
+  padding: 1.125em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
+}
+
+.signup {
+  color: rgb(77, 75, 75);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: 0.5em;
+}
+
+.form--input {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.form--desig {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.form--drop {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+
+.form--input:focus {
+  border: 1px solid #639;
+  outline: none;
+}
+
+.form--marketing {
+  display: flex;
+  margin-bottom: 1.25em;
+  align-items: center;
+}
+
+.form--marketing > input {
+  margin-right: 0.625em;
+}
+
+.form--marketing > label {
+  color: grey;
+}
+
+.checkbox, input[type="checkbox"] {
+  accent-color: #639;
+} 
+.form--submit {
+  width: 50%;
+  padding: 0.625em;
+  border-radius: 5px;
+  color: white;
+  background-color: #639;
+  border: 1px dashed #639;
+  cursor: pointer;
+}
+
+.form--submit:hover {
+  color: #639;
+  background-color: white;
+  border: 1px dashed #639;
+  cursor: pointer;
+  transition: 0.5s;
+} 
+</style>
+</head>
+
+<body>
+  <div style="padding:15px">
+  <div style="width:35%;  margin: auto;" >
+<form class="form" action="adddoc" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  {% comment %} <table width="575" height="402" border="1"> {% endcomment %}
+    
+    {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">Name</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        <span class="signup">ADD DOCTOR</span>
+        
+        <input type="text" name="textfield" class="form--input" required pattern="[A-Z a-z.]{3,30}" placeholder="Name"/>
+      </label></td>
+    </tr>
+	{% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">PLACE</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        <input type="text" name="textfield2" class="form--input"  placeholder="PLACE"/>
+      </label></td>
+    </tr>
+	{% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">DOB</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        <input type="date" name="date" class="form--input"  placeholder="DOB"/>
+      </label></td>
+    </tr>
+    <tr>
+      {% comment %} <td>Department</td>
+      <td> {% endcomment %}
+      <select class="form--drop" name="dept" id="check" onchange="check()" required>
+        {% comment %} <option value="">Department</option> {% endcomment %}
+       
+		{% for i in val %}
+       <option value="{{i.id}}">{{i.departmentname}}</option>
+       {% endfor %}
+      </select>
+      </td>
+      </tr>
+    {% comment %} <tr>
+      <th scope="row">Department</th>
+      <td><input type="text" name="dept" class="form--input" required pattern="[A-Z a-z.]{2,30}" placeholder="Department"/></td>
+    </tr> {% endcomment %}
+    <tr>
+      {% comment %} <th scope="row">Designation</th> {% endcomment %}
+      <td><input type="text" name="desig" id="des" class="form--desig" pattern="[A-Z a-z.]{3,30}" placeholder="Designation"/></td>
+    </tr>
+    <tr>
+      {% comment %}

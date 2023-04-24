@@ -1,0 +1,70 @@
+  {% extends 'hospital/Hospital dash.html'%}
+{% block body %}
+
+<form id="form1" name="form1" method="post" action=" {% url 'edit1' %}">
+  <table class= table-dark table-striped width="200" border="1" >
+    <tr>
+      <td>Doctor</td>
+      <td><label>
+        <select name="select">
+          {% for i in val1 %}
+          <option  value={{i.id}} {% if i.id == val.d_id.id %} selected {% endif %}> {{i.Fname}}</option>
+          {% endfor %}
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Day</td>
+      <td><label>
+        <select name="select1">
+          <option {% if val.day == 'Sunday' %}selected {% endif %}>Sunday</option>
+          <option {% if val.day == 'Monday' %}selected {% endif %}>Monday</option>
+          <option {% if val.day == 'Tuesday' %}selected {% endif %}>Tuesday</option>
+          <option {% if val.day == 'Wednesday' %}selected {% endif %}>Wednesday</option>
+          <option {% if val.day == 'Thursday' %}selected {% endif %}>Thursday</option>
+          <option {% if val.day == 'Friday' %}selected {% endif %}>Friday</option>
+          <option {% if val.day == 'Sataurday' %}selected {% endif %}>Sataurday</option>
+          
+          
+          
+        </select>
+      </label></td>
+    </tr>
+    <tr>
+      <td>From time </td>
+      <td><label>
+        <input type="time" name="from" value="{{val.Fromtime|time:"H:i"}}" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>To time </td>
+      <td><label>
+        <input type="time" name="totime" value="{{val.Totime|time:"H:i"}}" />
+      </label></td>
+    </tr>
+
+   
+    <tr>
+      <td colspan="2"><label>
+        <input type="submit" name="Submit" value="Update schedule" />
+      </label></td>
+    </tr>
+  </table>
+  <p>&nbsp;</p>
+</form>
+{% endblock %}  
+
+
+
+
+
+
+
+
+
+
+
+################################
+
+        
+        

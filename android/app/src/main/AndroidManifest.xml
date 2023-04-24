@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.ehr">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/desk"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/desk"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.EHR"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
+        <activity
+            android:name=".custom_send_complaint"
+            android:exported="false" />
+        <activity
+            android:name=".send_complaints"
+            android:exported="false" />
+        <activity
+            android:name=".custom_list_doctor_rate"
+            android:exported="false" />
+        <activity
+            android:name=".view_doctor_rate"
+            android:exported="false" />
+        <activity
+            android:name=".feedback_user"
+            android:exported="false" />
+        <activity
+            android:name=".add_rate_after_list"
+            android:exported="false" />
+        <activity
+            android:name=".RateUsDialog"
+            android:exported="false" />
+        <activity
+            android:name=".send_feedback"
+            android:exported="false" />
+        <activity
+            android:name=".record_listview"
+            android:exported="false" />
+        <activity
+            android:name=".Dwonload_user_record"
+            android:exported="false" />
+        <activity
+            android:name=".doc_user_schedule"
+            android:exported="false" />
+        <activity
+            android:name=".custom_doc_view_schedule"
+            android:exported="false" />
+        <activity
+            android:name=".user_view_schedule1"
+            android:exported="false" />
+        <activity
+            android:name=".conform_booking"
+            android:exported="false" />
+        <activity
+            android:name=".custom_booking"
+            android:exported="false" />
+        <activity
+            android:name=".booking"
+            android:exported="false" />
+        <activity
+            android:name=".custom_schedule"
+            android:exported="false" />
+        <activity
+            android:name=".doc_viedw_schedule"
+            android:exported="false" />
+        <activity
+            android:name=".view_hospital"
+            android:exported="false" />
+        <activity
+            android:name=".view_doctor"
+            android:exported="false" />
+        <activity
+            android:name=".view_schedule"
+            android:exported="false" />
+        <activity
+            android:name=".uhome"
+            android:exported="false"
+            android:label="@string/title_activity_uhome"
+            android:theme="@style/Theme.EHR.NoActionBar" />
+        <activity
+            android:name=".UserHome2"
+            android:exported="false" />
+        <activity
+            android:name=".customhospital"
+            android:exported="false" />
+        <activity
+            android:name=".search"
+            android:exported="false" />
+        <activity
+            android:name=".user_home"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".ipaddress"
+            android:exported="true" />
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

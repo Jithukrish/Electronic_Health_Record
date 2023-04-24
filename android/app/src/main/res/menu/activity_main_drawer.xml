@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/search"
+            android:icon="@drawable/ic_search"
+            android:title="search" />
+        <item
+            android:id="@+id/view_schedule"
+            android:icon="@drawable/ic_booking"
+            android:title="view_schedule" />
+
+        <item
+            android:id="@+id/download_record"
+            android:icon="@drawable/ic_complaint"
+            android:title="Download Record" />
+        <item
+            android:id="@+id/complaint"
+            android:icon="@drawable/ic_booking"
+            android:title="complaint" />
+
+        <item
+            android:id="@+id/userrecord"
+            android:icon="@drawable/ic_booking"
+            android:title="search" />
+        <item
+            android:id="@+id/comp"
+            android:icon="@drawable/ic_booking"
+            android:title="send complaints" />
+        <item
+            android:id="@+id/rating"
+            android:icon="@drawable/ic_booking"
+            android:title="Rating" />
+    </group>
+    <item android:title="Communicate">
+
+
+        <menu>
+
+            <item android:title="Share"
+                android:icon="@drawable/ic_share"
+                android:id="@+id/nav_share"/>
+
+            <item android:title="Feedback"
+                android:icon="@drawable/ic_feedback"
+                android:id="@+id/nav_feedback"/>
+
+            <item android:title="About us"
+                android:icon="@drawable/ic_aboutus"
+                android:id="@+id/nav_aboutus"/>
+
+        </menu>
+
+    </item>
+</menu>

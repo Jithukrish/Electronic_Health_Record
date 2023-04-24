@@ -1,0 +1,268 @@
+{% extends 'hospital/Hospital dash.html' %}
+
+{% block body %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+   $(document).ready(function(){
+    $("#check").change(function(){
+      var id=document.getElementById("check").value;
+      
+     if (id == "staff" ){
+     
+      $("#des").show();
+  }
+  else
+  {
+   
+  $("#des").hide();
+  }
+  
+    });
+  }); 
+
+
+  {% comment %} function check(){
+    const myDropdown = document.getElementById('drp');
+const myInput = document.getElementById('des');
+
+myDropdown.addEventListener('change', function() {
+  if (myDropdown.value === 'guard') {
+    myInput.disabled = true;
+  } else {
+    myInput.disabled = false;
+  }
+});
+  } {% endcomment %}
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<style>.form {
+  background-color: white;
+  height=120px;
+  padding: 1.125em;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 5px 5px 15px -1px rgba(0,0,0,0.75);
+}
+
+.signup {
+  color: rgb(77, 75, 75);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: block;
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: 0.5em;
+}
+
+.form--input {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.form--desig {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+.form--drop {
+  width: 100%;
+  margin-bottom: 1.25em;
+  height: 52px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  padding: 0.8em;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+}
+
+.form--input:focus {
+  border: 1px solid #639;
+  outline: none;
+}
+
+.form--marketing {
+  display: flex;
+  margin-bottom: 1.25em;
+  align-items: center;
+}
+
+.form--marketing > input {
+  margin-right: 0.625em;
+}
+
+.form--marketing > label {
+  color: grey;
+}
+
+.checkbox, input[type="checkbox"] {
+  accent-color: #639;
+} 
+.form--submit {
+  width: 50%;
+  padding: 0.625em;
+  border-radius: 5px;
+  color: white;
+  background-color: #639;
+  border: 1px dashed #639;
+  cursor: pointer;
+}
+
+.form--submit:hover {
+  color: #639;
+  background-color: white;
+  border: 1px dashed #639;
+  cursor: pointer;
+  transition: 0.5s;
+} 
+</style>
+</head>
+
+<body>
+  <div style="padding:15px">
+  <div style="width:35%;  margin: auto;" >
+<form class="form" action="adddoc" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  {% comment %} <table width="575" height="402" border="1"> {% endcomment %}
+    
+    {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">Name</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        <span class="signup">ADD DOCTOR</span>
+        
+        <input type="text" name="textfield" class="form--input" required pattern="[A-Z a-z.]{3,30}" value="Dr." placeholder="Name"/>
+      </label></td>
+    </tr>
+	    {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">Place</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="text" name="textfield2" class="form--input" required pattern="[A-Z a-z.]{3,30}" placeholder="place"/>
+      </label></td>
+    </tr>
+	 {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">DOB</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="text" name="date" class="form--input" onfocus="this.type='date'" placeholder="date of birth"  min="1970-01-01" max="2000-08-20" required/>
+      </label></td>
+    </tr>
+    <tr>
+      {% comment %} <td>Department</td>
+      <td> {% endcomment %}
+      <select class="form--drop" name="dept" id="check" onchange="check()" required>
+        {% comment %} <option value="">Department</option> {% endcomment %}
+		 {% for i in val %}
+       <option value="{{i.id}}">{{i.departmentname}}</option>
+       {% endfor %}
+       
+      </select>
+      </td>
+      </tr>
+	  {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">GENDER</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        <td>GENDER</td>
+        
+        <p><label>
+          <input type="radio" name="RadioGroup1"  value="male" />
+          male</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1"  value="female" />
+          female</label></p>
+        <br /><label>
+      </label></td>
+    </tr> 
+    {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">phone</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="text" name="textfield5" class="form--input"  placeholder="phone"/>
+      </label></td>
+    </tr>
+	 {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">email</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="text" name="textfield6" class="form--input"  placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" />
+      </label></td>
+    </tr>
+	 {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">image</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="file" name="file" class="form--input"  placeholder="image"/>
+      </label></td>
+    </tr>
+	 {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">specification</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="text" name="textfield3" class="form--input"  placeholder="specification" required/>
+      </label></td>
+    </tr>
+    
+	
+	 {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">reg no</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="text" name="textfield7" class="form--input"  placeholder="register number" required pattern="[0-9]{5}"/>
+      </label></td>
+    </tr>
+	 {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">username</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="text" name="username" class="form--input"  placeholder="username"/>
+      </label></td>
+    </tr>
+     {% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">password</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="text" name="password" class="form--input"  placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+      </label></td>
+    </tr>
+	{% comment %} <tr> {% endcomment %}
+      {% comment %} <th width="374" scope="row">submit</th> {% endcomment %}
+      {% comment %} <td width="185"><label> {% endcomment %}
+        
+        
+        
+        <input type="submit" name="submit" class="form--input" value="submit"/>
+      </label></td>
+    </tr>
+     {% endblock %}
+      {% comment %} {% endcomment %}

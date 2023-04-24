@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form id="form1" name="form1" method="post" action="doct_search">
+  <table width="200" border="1">
+    <tr>
+      <td colspan="6">
+        <select name="select">
+          {% for i in val %}
+          <option value="{{i.id}}"> {{i.Fname}}</option>
+          {% endfor %}
+        </select>
+        
+         
+          <input type="submit" name="Submit" value="search" />
+      </label></td>
+    </tr>
+    
+    <tr>
+      <td>Si no</td>
+      <td>username</td>
+      <td>address</td>
+      <td>email</td>
+      <td>phone</td>
+      <td>date</td>
+      <td>time</td>
+    </tr>
+    {% for i in val1 %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.u_id.Fname}}</td>
+      <td>{{i.u_id.address}}</td>
+      <td>{{i.u_id.email}}</td>
+      <td>{{i.u_id.phone}}</td>
+      <td>{{i.bdate}}</td>
+      <td>{{i.sloat}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+</body>
+</html>

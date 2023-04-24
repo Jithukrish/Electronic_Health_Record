@@ -1,0 +1,38 @@
+ {% extends 'hospital/Hospital dash.html'%}
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="adddept1">
+  <table width="200" border="2" class="table table-primary table-striped table-hover">
+    <tr>
+      <td><h6>SL NO </h6></td>
+      <td><h6>DEPARTMENTS</h6></td>
+      <td>&nbsp;</td>
+    </tr>
+    {% for i in val %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{i.departmentname}}</td>
+      <td><a href="{% url 'deledept' id=i.id %}"  class="btn btn-outline-danger">Remove</a></td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="3"><label>
+        <div align="center">
+          <input type="submit" name="Submit" value="Add" href="adddept" class="btn btn-outline-primary" />
+          </div>
+      </label></td>
+    </tr>
+  </table>
+  <div align="right"></div>
+</form>
+</body>
+{% endblock %}
+</html>  

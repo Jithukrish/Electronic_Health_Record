@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+{% comment %} <form id="form1" name="form1" method="post"  enctype="multipart/form-data"  action="adddoc"> {% endcomment %}
+  <table width="200" border="1">
+    <tr>
+      <td> name </td>
+      <td><label>
+        <input type="text" name="textfield" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>place </td>
+      <td><label>
+        <input type="text" name="textfield2" />
+      </label></td>
+    </tr>
+    {% comment %} <tr>
+      <td>lattitude </td>
+      <td><label>
+        <input type="text" name="lattitude" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>longitide </td>
+      <td><label>
+        <input type="text" name="longitide" />
+      </label></td>
+    </tr> {% endcomment %}
+    <tr>
+      <td>Dob </td>
+      <td><label>
+        <input type="date" name="date" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>departmentName </td>
+      <td><label>
+      <select name="dept">
+        <option value ="">select dept </option>
+        {% for i in val %}
+       <option value="{{i.id}}">{{i.departmentname}}</option>
+       {% endfor %}
+      </select>
+      </label></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><p>
+        <label>
+          <input type="radio" name="RadioGroup1" value="male" />
+          male</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="female" />
+          female</label>
+        <br />
+      </p>      <label></label></td>
+    </tr>
+    
+    <tr>
+      <td>phone</td>
+      <td><label>
+        <input type="text" name="textfield5" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td><label>
+        <input type="text" name="textfield6" />
+      </label></td>
+    </tr>
+    <tr>
+      <td><label>image</label></td>
+      <td><label>
+        <input type="file" name="file" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>specification</td>
+      <td><label>
+      <input type="text" name="textfield3" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Reg no </td>
+      <td><label>
+        <input type="text" name="textfield7" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>Username </td>
+      <td><label>
+        <input type="text" name="username" />
+      </label></td>
+    </tr>
+    <tr>
+      <td>password </td>
+      <td><label>
+        <input type="text" name="password" />
+      </label></td>
+    </tr>
+    <tr>
+      <td colspan="2"><label>
+        <input type="submit" name="Submit" value="Submit"   />
+      </label></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

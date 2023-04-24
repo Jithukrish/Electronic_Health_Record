@@ -1,0 +1,123 @@
+{% extends 'doctor/DOCTOR_DASH.html'%}
+{% block body %}
+
+
+
+
+
+<head>
+  <title> Verify hospital</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+</head>
+<style>
+
+
+h2 {
+font-family: 'Indie Flower', cursive;
+
+  color: #03A9F4;
+  font-weight: bold;
+  text-align: center;
+  padding: 20px 0;
+}
+
+table caption {
+    padding: .5em 0;
+}
+
+table.dataTable th
+{
+  align: center;
+  background-color: rgb(0, 7, 8);
+  color: #fff;
+}
+table.dataTable td {
+  background-color: #fff;
+}
+
+.p {
+  text-align: center;
+  padding-top: 140px;
+  font-size: 14px;
+}
+
+img{
+  transition: 2s;
+  border-radius:20px;
+   width:100px;
+   height:100px;
+  
+}
+
+img:hover{
+transform: scale(1.1);
+}
+</style>
+
+
+  
+<div class="container">
+
+    
+  <div class="card p-5">
+    <h1 align="center">RECORDS </h1>
+    <div class="col-xs-12">
+      {% comment %} <tr>
+        <td colspan="5"><label>
+          <div align="right">
+            <input type="submit"     name="Submit" class="btn btn-primary" value=" Upload file" />
+            </div>
+        </label></td></tr> {% endcomment %}
+      <table  id="table_id" class="table table-bordered table-hover " >
+       
+        <thead>
+<form id="form1" name="form1" method="post" action="{% url 'view_file' %}">
+  
+    <tr>
+      <th scope="col">SL No</th>
+      <th scope="col">DOCTOR</th>
+      <th scope="col">DATE</th>
+      <th scope="col"> RECORDS </th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {%  for i in val %}
+    <tr>
+      <td>{{forloop.counter}}</td>
+      <td>{{i.d_id.Fname}}</td>
+      <td>{{i.date}}</td>
+      <td>{{i.records}}</td>
+      <td><a href="{{i.media.url}}" download>Download</a></td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="4" align="center"><label>
+        <div align="center">
+          <input type="submit" name="Submit" class="btn btn-primary" value=" Upload file" />
+          </div>
+      </label></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+<script>
+$(document).ready( function () {
+  $('#table_id').DataTable();
+} );
+
+</script>
+
+
+
+{% endblock %}
