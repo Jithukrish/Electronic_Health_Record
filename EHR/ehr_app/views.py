@@ -501,6 +501,7 @@ def android_search_view(request):
     cursor=connection.cursor()
     sen_res=[]
     cursor.execute("SELECT `ehr_app_doctor`.*,AVG(`ehr_app_rating`.`rating`) AS rating FROM `ehr_app_doctor` LEFT JOIN `ehr_app_rating` ON `ehr_app_doctor`.`id`=`ehr_app_rating`.`d_id_id` JOIN `ehr_app_departments` ON `ehr_app_doctor`.`d_id_id`=`ehr_app_departments`.`id`  WHERE ehr_app_doctor.Fname LIKE '%"+str(txt)+"%' OR `ehr_app_departments`.`departmentname` LIKE '%"+str(txt)+"%' GROUP BY `ehr_app_doctor`.`id` ")
+    print("SELECT `ehr_app_doctor`.*,AVG(`ehr_app_rating`.`rating`) AS rating FROM `ehr_app_doctor` LEFT JOIN `ehr_app_rating` ON `ehr_app_doctor`.`id`=`ehr_app_rating`.`d_id_id` JOIN `ehr_app_departments` ON `ehr_app_doctor`.`d_id_id`=`ehr_app_departments`.`id`  WHERE ehr_app_doctor.Fname LIKE '%"+str(txt)+"%' OR `ehr_app_departments`.`departmentname` LIKE '%"+str(txt)+"%' GROUP BY `ehr_app_doctor`.`id` ")
     res=cursor.fetchall()
     print(res,"==========================")
     # cursor.execute("SELECT* FROM `ehr_app_hospital` WHERE hospitalname LIKE '%"+str(txt)+"%'")
@@ -698,7 +699,7 @@ def user_view_schedule(request):
     for i in ob1:
              if len(ob1)>0:
                 
-                row={"hname":i.s_id.H_id.hospitalname,"dname":i.s_id.d_id.Fname,"sloat":i.sloat,"date":i.bdate,"id":i.id}
+                row={"hname":i.s_id.H_id.hospitalname,"dname":i.s_id.d_id.Fname,"sloat":i.sloat,"date":i.bdate,"id":i.id,"did":i.s_id.d_id.id}
                 data.append(row)
     print(data,'$$$$$$$$$$$$$$$$$$$$$$$$$$')            
     r = json.dumps(data)
@@ -784,13 +785,11 @@ def doct_search(request):
     print(ob1)
     return render(request,'Hospital/doct_view_schedule.html',{'val':ob,'val1':ob1})
 ########################### uploading user record ################################################
-
-
 def download_file(request,id):
     print("#########",id)
     request.session['user']=id
 
-    user1 = userrecord.objects.filter(b_id__id=request.session['user'])
+    user1 = userrecord.objects.filter(b_id__u_id__id=request.session['user'])
     print(user1)
     return render(request,'doctor/view_files.html',{'val':user1})
 
@@ -901,21 +900,74 @@ def view_feedback(request):
 
     ################################################comaplaints####################################
 def send_comp(request):
-    
     print(request.POST)
     uid=request.POST['lid']
     hid=request.POST['hid']
+
     complaints=request.POST['complaint']
     ob=complaint()
     ob.u_id=User.objects.get(l_id__id=uid)
     ob.date=datetime.datetime.now()
-    ob.h_id=Hospital.objects.get(l_id__id=hid)
+    print(hid,"===========================")
+    ob.d_id=Doctor.objects.get(id=hid)
     ob.complaints=complaints
-   
     ob.save()
     data = {"result": "ok"}
     r = json.dumps(data)
     print (r)
-        
     return HttpResponse(r)
     
+
+def view_complaint(request):
+    ob=complaint.objects.all()
+    return render(request,'complaint.html',{'val':ob}) 
+
+
+
+def hospital_search1(request):
+    lid=request.POST['lid']
+    #  print(lid,"+++++++++++++++++++++++++++++++")
+    #  ob=Doctor.objects.filter(d_id__H_id__id=lid)
+    #  print(ob,"+++++++++++++++++++++++++++++++")
+    #  data=[]
+    # #  hlist=[]
+    #  for a in ob:
+    #      row = {"id":a.id,"name": a.Fname, "rating":0,"schedule":0,"email":a.email,"phn":a.phone,"adrs":a.specilization,"img":str(a.image),"latti":a.lattitude,"longi":a.logitude,"type":'doctor',"place":a.place}
+    #      data.append(row)
+    #  r = json.dumps(data)
+    #  print(r,"************************")
+    from django.db import connection
+    cursor=connection.cursor()
+    sen_res=[]
+    cursor.execute("SELECT `ehr_app_doctor`.*,AVG(`ehr_app_rating`.`rating`) AS rating FROM `ehr_app_doctor` LEFT JOIN `ehr_app_rating` ON `ehr_app_doctor`.`id`=`ehr_app_rating`.`d_id_id` JOIN `ehr_app_departments` ON `ehr_app_doctor`.`d_id_id`=`ehr_app_departments`.`id`  WHERE `ehr_app_departments`.`H_id_id`='"+str(lid)+"'  GROUP BY `ehr_app_doctor`.`id` ")
+    res=cursor.fetchall()
+    print(res,"==========================")
+    data = []
+    for a in res:
+        if a[14] is None:
+            print(a[14],"======================================")
+            rating=0
+        else:
+            rating=a[14]
+        row = {"id":a[0],"name": a[4], "rating":rating,"schedule":0,"email":a[8],"phn":a[7],"adrs":a[9],"img":a[3],"latti":a[12],"longi":a[13],"type":'doctor',"place":a[5]}
+        data.append(row)
+    r = json.dumps(data)
+    return HttpResponse(r)   
+
+
+
+def report(request):
+     return render(request,'admint/report.html') 
+
+def view_report(request):
+    start = request.POST.get('textfield')
+    endDate = request.POST.get('textfield2')
+    ob=Booking.objects.filter(bdate__range=(start,endDate))
+    data=[]
+    for i in ob:
+            
+        row={"id":i.id, "Fname":i.u_id.Fname,"phone":i.u_id.phone,"bdate":i.bdate,"slot":i.sloat,"status":i.status} 
+        data.append(row)
+        print(row)
+        print("==============================")
+    return JsonResponse({"message":"true",'data':data})

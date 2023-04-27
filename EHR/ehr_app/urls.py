@@ -67,6 +67,11 @@ urlpatterns = [
        path('add_rating', views.add_rating, name='add_rating'),
       path('view_feedback', views.view_feedback, name='view_feedback'),
       path('send_comp', views.send_comp, name='send_comp'),
+      path('view_complaint', views.view_complaint, name='view_complaint'),
+
+      path('hospital_search1', views.hospital_search1, name='hospital_search1'),
+      path('view_report', views.view_report, name='view_report'),
+      path('report', views.report, name='report'),
 
 
 

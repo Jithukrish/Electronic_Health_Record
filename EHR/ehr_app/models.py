@@ -34,11 +34,7 @@ class User(models.Model):
     place = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     phone = models.BigIntegerField()
-class complaint(models.Model):
-    u_id = models.ForeignKey(User,on_delete=models.CASCADE)
-    complaints = models.CharField(max_length=100)
-    date = models.DateField()
-    H_id = models.ForeignKey(Hospital,on_delete=models.CASCADE)
+
 class Doctor(models.Model):
     l_id = models.ForeignKey(login,on_delete=models.CASCADE)
     regno = models.IntegerField(unique=True)
@@ -53,6 +49,11 @@ class Doctor(models.Model):
     phone = models.BigIntegerField()
     email = models.CharField(max_length=100)
     specilization = models.CharField(max_length=100)
+class complaint(models.Model):
+    u_id = models.ForeignKey(User,on_delete=models.CASCADE)
+    complaints = models.CharField(max_length=100)
+    date = models.DateField()
+    d_id = models.ForeignKey(Doctor,on_delete=models.CASCADE)
 class Schedule(models.Model):
     d_id = models.ForeignKey(Doctor,on_delete=models.CASCADE)
     H_id = models.ForeignKey(Hospital,on_delete=models.CASCADE)

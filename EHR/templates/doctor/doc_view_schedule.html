@@ -130,7 +130,7 @@ transform: scale(1.1);
         {% elif i.status == 'reject'%}
         Removed
        {% else%}
-        <a href="{% url 'download_file'  id=i.id %}">view more</a></td>
+        <a href="{% url 'download_file'  id=i.u_id.id %}">view more</a></td>
         {% endif %}
         </tr>
       {% comment %} {% endif %} {% endcomment %}

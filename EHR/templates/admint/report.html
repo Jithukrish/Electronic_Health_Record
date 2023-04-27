@@ -1,0 +1,117 @@
+{% extends 'admint/addash.html'%}
+{% block body %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <table class="" >
+    
+    </table>
+    
+
+  <table class="table table-bordered table-striped mt-5" id="productstable">
+    <thead class="thead-light">
+      <tr>
+<form id="myForm" name="form1" method="post" action="">
+
+        <td colspan="2">From date
+          <label>
+          <input type="date" name="textfield" id='date' />
+        </label></td>
+        <td colspan="2">End date
+          <label>
+          <input type="date" name="textfield2" id='enddate' />
+          </label></td>
+        <td><label>
+          <div align="center">
+            <input type="submit" name="Submit" value="search" />
+            </div>
+        </label></td>
+      </tr>
+    </form>
+
+      <tr>
+
+        
+        
+      <th>SL no</th>
+      <th>User</th>
+      <th>Phone</th>
+      <th>Booking date </th>
+      <th>Slot</th>
+      <th>Status</th>
+        
+        
+        
+      </tr>
+    </thead>
+    <tbody id="table-body">
+     
+
+      
+
+    </tbody>
+  </table>
+  <div align="center"></div>
+</form>
+
+
+<script>
+
+  $(document).ready(function() {
+    $('#myForm').submit(function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+       
+        // Get the form data
+        var formData = $('#myForm').serialize();
+       
+        // Send an AJAX request to the server
+        $.ajax({
+            type: 'POST',
+            url: '/view_report',
+            data: formData,
+            success: function(response) {
+                // Do something with the response
+                // console.log(response.data.data);
+          var jsonData = response.data;
+          var tableBody = $("#table-body");
+
+        // clear any existing rows in the table
+        tableBody.empty();
+
+        // iterate through the jsonData and add each row to the table
+        $.each(jsonData, function(index, data) {
+
+          // create a new row
+          var row = $("<tr></tr>");
+          var sl = $("<td></td>").text(index+1);
+          row.append(sl);
+          // add date column
+          var nameCol = $("<td></td>").text(data.Fname);
+          row.append(nameCol);
+
+          var deptColumn = $("<td></td>").text(data.phone);
+          row.append(deptColumn)
+
+          var examColumn = $("<td></td>").text(data.bdate);
+          row.append(examColumn)
+
+          var hallColumn = $("<td></td>").text(data.slot);
+          row.append(hallColumn)
+          var b_status= $("<td></td>").text(data.status);
+          row.append(b_status)
+
+          tableBody.append(row);
+        });
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                // Handle the error
+                console.log(textStatus, errorThrown);
+            }
+        });
+    });
+});
+
+</script>
+
+{% endblock %}

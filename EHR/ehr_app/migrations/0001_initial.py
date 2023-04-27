@@ -142,16 +142,7 @@ class Migration(migrations.Migration):
             name='H_id',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ehr_app.hospital'),
         ),
-        migrations.CreateModel(
-            name='complaint',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('complaints', models.CharField(max_length=100)),
-                ('date', models.DateField()),
-                ('reply', models.CharField(max_length=100)),
-                ('u_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='ehr_app.user')),
-            ],
-        ),
+      
         migrations.CreateModel(
             name='Booking',
             fields=[
